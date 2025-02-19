@@ -1,0 +1,68 @@
+image:
+  client:
+    registry: docker.io
+    #repository: permitio/opal-client-standalone
+    repository: permitio/opal-client
+  server:
+    registry: docker.io
+    repository: permitio/opal-server
+  pgsql:
+    registry: docker.io
+    repository: postgres
+    tag: alpine
+
+server:
+  port: 7002
+  policyRepoUrl: "https://github.com/permitio/opal-example-policy-repo"
+  policyRepoSshKey: null
+  policyRepoClonePath: null
+  policyRepoMainBranch: null
+  pollingInterval: 30
+  dataConfigSources:
+    # Option #1 - No data sources
+    # config:
+    #   entries: []
+
+    # Option #2 - Dynamically get data sources
+    # external_source_url: "http://ons-sandbox/v1/sandbox/data"
+
+    # Option #3 - Example static data sources (endpoint is empty by default)
+    # config:
+    #   entries:
+    #   - url: http://opal-server:7002/policy-data
+    #     topics: ["policy_data"]
+    #     dst_path: "/static"
+
+    # Option #4 - Leave config empty and instead supply using the OPAL_DATA_CONFIG_SOURCES environment variable through env or secret
+    # config: null
+
+    # Option #5 - Example api data sources (endpoint is empty by default)
+    config:
+      entries:
+      - url: "http://ons-sandbox/v1/sandbox/data"
+        topics: ["policy_data"]
+        config:
+          headers:
+            Authorization: "Bearer FAKE-SECRET"
+
+  broadcastUri: null
+  broadcastPgsql: true
+  uvicornWorkers: 4
+  replicas: 1
+  extraEnv: {
+    # "CUSTOM_ENV_VAR": "VALUE"
+  }
+
+client:
+  port: 7000
+  opaPort: 8181
+  replicas: 1
+  # If you need to specify a custom hostname for the opal-sever, configure the serverUrl property
+  # serverUrl: http://custom-hostname-for-opal:opal-port
+  extraEnv: 
+#    OPAL_DATA_UPDATER_ENABLED: "False"
+#    OPAL_POLICY_STORE_URL: http://opa-envoy:8181/
+    OPAL_SERVER_URL: "ws://opal-server.opal-ns.svc.cluster.local:7002"
+
+
+# ❯ helm upgrade -f /Users/aiden/Development/sandbox/opal/opal-helm-chart/values.yaml -n opal-ns opal .
