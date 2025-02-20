@@ -1,0 +1,128 @@
+{
+	"users": {
+		"sunil": {
+			"name": "Sunil",
+			"roles": [
+				"guest"
+			],
+			"accountIds": [
+				"account2"
+			],
+			"location": {
+				"country": "US",
+				"ip": "8.8.8.8"
+			}
+		},
+		"eve": {
+			"name": "Eve",
+			"roles": [
+				"customer"
+			],
+			"accountIds": [
+				"account5"
+			],
+			"location": {
+				"country": "US",
+				"ip": "8.8.8.8"
+			}
+		},
+		"alice": {
+			"name": "Alice",
+			"roles": [
+				"admin"
+			],
+			"accountIds": [
+				"account1",
+				"account2"
+			],
+			"location": {
+				"country": "US",
+				"ip": "8.8.8.8"
+			}
+		},
+		"aiden": {
+			"name": "Aiden",
+			"roles": [
+				"employee",
+				"billing"
+			],
+			"accountIds": [
+				"account3"
+			],
+			"location": {
+				"country": "US",
+				"ip": "8.8.8.8"
+			}
+		}
+	},
+	"role_permissions": {
+		"guest": [
+			{
+				"action": "read",
+				"type": "cat"
+			},
+			{
+				"action": "read",
+				"type": "finance"
+			}
+		],
+		"employee": [
+			{
+				"action": "read",
+				"type": "dog"
+			},
+			{
+				"action": "read",
+				"type": "cat"
+			},
+			{
+				"action": "update",
+				"type": "dog"
+			},
+			{
+				"action": "update",
+				"type": "cat"
+			}
+		],
+		"customer": [
+			{
+				"action": "read",
+				"type": "dog"
+			},
+			{
+				"action": "read",
+				"type": "cat"
+			},
+			{
+				"action": "adopt",
+				"type": "dog"
+			},
+			{
+				"action": "adopt",
+				"type": "cat"
+			}
+		],
+		"billing": [
+			{
+				"action": "read",
+				"type": "finance"
+			},
+			{
+				"action": "update",
+				"type": "finance"
+			}
+		]
+	},
+	"accounts": {
+		"account2": {
+			"accountId": "account2",
+			"accountNumber": "87654321",
+			"sortCode": "65-43-21"
+		},
+		"account1": {
+			"accountId": "account1",
+			"accountNumber": "12345678",
+			"sortCode": "12-34-56"
+		}
+	}
+}

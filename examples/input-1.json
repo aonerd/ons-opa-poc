@@ -1,0 +1,6 @@
+{
+    "user": "alice",
+    "action": "read",
+    "object": "account1",
+    "type": "account"
+}
