@@ -39,7 +39,7 @@ server:
     # Option #5 - Example api data sources (endpoint is empty by default)
     config:
       entries:
-      - url: "http://ons-sandbox/v1/sandbox/data"
+      - url: "http://ons-sandbox/v1/users"
         topics: ["policy_data"]
         periodic_update_interval: 30
         config:
