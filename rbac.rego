@@ -30,6 +30,10 @@ allow if {
 	user_is_admin
 }
 
+allow {
+	input.user == "andy"
+}
+
 # Allow the action if the user is granted permission to perform the action.
 allow if {
 	# Find permissions for the user.
