@@ -30,9 +30,19 @@ allow if {
 	user_is_admin
 }
 
-allow {
+# Allow andy to do anything
+allow if {
 	input.user == "andy"
 }
+
+# you can ignore this rule, it's simply here to create a dependency
+# to another rego policy file, so we can demonstate how to work with
+# an explicit manifest file (force order of policy loading).
+#allow {
+#	input.matching_policy.grants
+#	input.roles
+#	utils.hasPermission(input.matching_policy.grants, input.roles)
+#}
 
 # Allow the action if the user is granted permission to perform the action.
 allow if {
